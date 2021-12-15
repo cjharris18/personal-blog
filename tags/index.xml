@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Chris Harris</title>
+    <link>https://cjharris18.github.io/tags/</link>
+    <description>Recent content in Tags on Chris Harris</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>christopherjharris@protonmail.com (Chris Harris)</managingEditor>
+    <webMaster>christopherjharris@protonmail.com (Chris Harris)</webMaster>
+    <copyright>Copyright {year}. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 26 Oct 2021 18:18:41 +0100</lastBuildDate><atom:link href="https://cjharris18.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ctf</title>
+      <link>https://cjharris18.github.io/tags/ctf/</link>
+      <pubDate>Tue, 26 Oct 2021 18:18:41 +0100</pubDate>
+      <author>christopherjharris@protonmail.com (Chris Harris)</author>
+      <guid>https://cjharris18.github.io/tags/ctf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>forensics</title>
+      <link>https://cjharris18.github.io/tags/forensics/</link>
+      <pubDate>Tue, 26 Oct 2021 18:18:41 +0100</pubDate>
+      <author>christopherjharris@protonmail.com (Chris Harris)</author>
+      <guid>https://cjharris18.github.io/tags/forensics/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

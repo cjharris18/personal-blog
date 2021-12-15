@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    
+        <title>IntakeCTF - Missing Bytes Writeup | Chris Harris</title>
+    
+  <meta name="description" content="Here is my writeup for the Missing Bytes challenge from the IntakeCTF, hosted by the WMG Cyber Society. An internal CTF hosted at the University of Warwick for the Cyber Security students.
+We are told that the PNG image provided won&rsquo;t open.
+The first thing we can try is to use the pngcheck command, this will tell us if the PNG is corrupted, and if so hopefully how exactly it is corrupted.">
+  <meta name="author" content="Chris Harris"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Chris Harris",
+    
+    "url": "https:\/\/cjharris18.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/cjharris18.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/cjharris18.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/cjharris18.github.io\/intakectfmissingbytes\/",
+          "name": "Intake ctf missing bytes writeup"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Chris Harris"
+  },
+  "headline": "IntakeCTF - Missing Bytes Writeup",
+  "description" : "Here is my writeup for the Missing Bytes challenge from the IntakeCTF, hosted by the WMG Cyber Society. An internal CTF hosted at the University of Warwick for the Cyber Security students.\nWe are told that the PNG image provided won\u0026rsquo;t open.\nThe first thing we can try is to use the pngcheck command, this will tell us if the PNG is corrupted, and if so hopefully how exactly it is corrupted.",
+  "inLanguage" : "en",
+  "wordCount":  1202 ,
+  "datePublished" : "2021-10-26T18:18:41",
+  "dateModified" : "2021-10-26T18:18:41",
+  "image" : "https:\/\/cjharris18.github.io\/images\/avatar.png",
+  "keywords" : [ "forensics, ctf" ],
+  "mainEntityOfPage" : "https:\/\/cjharris18.github.io\/intakectfmissingbytes\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/cjharris18.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/cjharris18.github.io\/images\/avatar.png",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="IntakeCTF - Missing Bytes Writeup" />
+<meta property="og:description" content="Here is my writeup for the Missing Bytes challenge from the IntakeCTF, hosted by the WMG Cyber Society. An internal CTF hosted at the University of Warwick for the Cyber Security students.
+We are told that the PNG image provided won&rsquo;t open.
+The first thing we can try is to use the pngcheck command, this will tell us if the PNG is corrupted, and if so hopefully how exactly it is corrupted.">
+<meta property="og:image" content="https://cjharris18.github.io/images/avatar.png" />
+<meta property="og:url" content="https://cjharris18.github.io/intakectfmissingbytes/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Chris Harris" />
+
+  <meta name="twitter:title" content="IntakeCTF - Missing Bytes Writeup" />
+  <meta name="twitter:description" content="Here is my writeup for the Missing Bytes challenge from the IntakeCTF, hosted by the WMG Cyber Society. An internal CTF hosted at the University of Warwick for the Cyber Security students.
+We are told …">
+  <meta name="twitter:image" content="https://cjharris18.github.io/images/avatar.png" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://cjharris18.github.io/images/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.89.4" />
+  <link rel="alternate" href="https://cjharris18.github.io/index.xml" type="application/rss+xml" title="Chris Harris"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://cjharris18.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://cjharris18.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://cjharris18.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+// css 
+<link rel="stylesheet" href="https://cjharris18.github.io/css/override-template.css">
+
+// javascript
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://cjharris18.github.io">Chris Harris</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="About" href="https://cjharris18.github.io/about">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Contact" href="https://cjharris18.github.io/contact">Contact</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="https://cjharris18.github.io/tags/">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Chris Harris" href="https://cjharris18.github.io">
+            <img class="avatar-img" src="https://cjharris18.github.io/images/avatar.png" alt="Chris Harris" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>IntakeCTF - Missing Bytes Writeup</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on October 26, 2021
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1202&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Chris Harris
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Here is my writeup for the <strong>Missing Bytes</strong> challenge from the IntakeCTF, hosted by the WMG Cyber Society. An internal CTF hosted at the University of Warwick for the Cyber Security students.</p>
+<p>We are told that the PNG image provided won&rsquo;t open.</p>
+<p><img src="image_1.png" alt="Figure 1"></p>
+<p>The first thing we can try is to use the <a href="https://manpages.debian.org/stretch/pngcheck/pngcheck.1.en.html"><code>pngcheck</code></a> command, this will tell us if the PNG is corrupted, and if so hopefully how exactly it is corrupted.</p>
+<pre><code class="language-bash">$ pngcheck -v IntakeCTF_flag.png 
+File: IntakeCTF_flag.png (84279 bytes)
+  chunk IHDR at offset 0x0000c, length 13:  invalid image dimensions (0x0)
+ERRORS DETECTED in IntakeCTF_flag.png
+</code></pre>
+<p>We are given some quite helpful output here. Firstly, we are told that there is an issue in the <a href="https://www.w3.org/TR/PNG-Chunks.html">IHDR</a> chunk. This must be found in every PNG image. This is where our second piece of information comes in useful. We are told there is an issue with the image dimensions being invalid. So, we now know why the image is corrupted and as a result, won&rsquo;t open.</p>
+<p>To further reiterate this, let&rsquo;s take a look at a hexdump of the file. We can do this by using <code>xxd</code>, and since what we desire is from the IHDR chunk, which is at the beginning of the file, we can pipe this into <code>head</code> so that we have less information to deal with.</p>
+<pre><code class="language-bash">$ xxd IntakeCTF_flag.png | head
+00000000: 8950 4e47 0d0a 1a0a 0000 000d 4948 4452  .PNG........IHDR
+00000010: 0000 0000 0000 0000 0806 0000 00c6 15b7  ................
+00000020: e200 0148 fe49 4441 5478 01ec c109 80d5  ...H.IDATx......
+00000030: 75bd ffff e7eb f3fd 9e65 1686 611b 4676  u........e..a.Fv
+00000040: d904 2444 4473 bb46 6a69 655a 6a66 6e2d  ..$DDs.FjieZjfn-
+00000050: 66dd 32b3 cdb4 faab 376d b9e5 357f e552  f.2.....7m..5..R
+00000060: 5656 9ad7 3ddb 4dbd 6648 2a2e 8888 c832  VV..=.M.fH*....2
+00000070: b209 386c c330 cc9c 3973 96ef f7f3 fe9f  ..8l.0..9s......
+00000080: 5958 3430 4034 d3f3 7850 5656 5656 5656  YX40@4..xPVVVVVV
+00000090: 5656 5656 5656 5656 5656 5656 5656 5656  VVVVVVVVVVVVVVVV
+</code></pre>
+<p>Now, lets break this down as much as possible so we can fully understand what we are seeing.</p>
+<ul>
+<li><code>89 50 4e 47 0d 0a 1a 0a</code>: Firstly, this can be identified as the <a href="https://en.wikipedia.org/wiki/List_of_file_signatures">file signature</a>, this is what UNIX systems use to identify a filetype.</li>
+<li><code>00 00 00 0d</code>: This is our IHDR length.</li>
+<li><code>49 48 44 52</code>: This is our chunk type, which in this case specifies IHDR.</li>
+<li><code>00 00 00 00</code>: This is our <strong>width</strong>, remember this was invalid before.</li>
+<li><code>00 00 00 00</code>: This is our <strong>height</strong>, this was also invalid before.</li>
+<li><code>08</code>: This is our bit depth.</li>
+<li><code>06</code>: This is our colour type.</li>
+<li><code>00</code>: This is our compression type.</li>
+<li><code>00</code>: This is our filter type.</li>
+<li><code>00</code>: This is our interval type.</li>
+<li><code>c6 15 b7 e2</code>: This is our <strong>crc checksum</strong>. This will be important later.</li>
+</ul>
+<p>For those curious how I know what each exact byte is, that is because with a PNG, these items of the IHDR chunk will always be found at the same place. This is useful to know for later on when we begin to fix the image dimensions. For more information on this, I find <a href="https://stackoverflow.com/questions/54845745/not-able-to-read-ihdr-chunk-of-a-png-file">this StackOverflow article</a> explains it well.</p>
+<p>Now, we know that the image dimensions are invalid, and where they are in the hexdump. So we can bruteforce every possible combination of dimensions to work out which the correct dimensions are. The only question now before we begin scripting is the following: <em>How will I know when the image dimensions are correct?</em></p>
+<p>There are technically 2 answers to this one:</p>
+<ol>
+<li>We can try every combination manually and see if the file opens, if it does then the dimensions are correct.</li>
+<li>We can use something I have previously mentioned, the <strong>crc checksum</strong>.</li>
+</ol>
+<p>Now, given the amount of possible combinations of image dimensions, it is best to choose the second option.</p>
+<p>So, lets start by explaining what the crc checksum itself is. Essentially, it is calculated based on the chunk data. If the IHDR chunk is valid, then it&rsquo;s <a href="http://www.dalkescientific.com/writings/diary/archive/2014/07/10/png_checksum.html">crc checksum</a> will match the crc provided in the hexdump. We can use this information to set a &lsquo;target&rsquo; in our script.</p>
+<p>For the purpose of this challenge, I decided the smartest language to script in was <code>Python3</code>.</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+
+from zlib import crc32
+
+</code></pre>
+<p>Firstly, we are importing the <code>zlib.crc32</code> method, this is what we can use to compute the checksum for the new IHDR chunk.</p>
+<pre><code class="language-python">data = open(&quot;IntakeCTF_flag.png&quot;,'rb').read()
+index = 12
+
+ihdr = bytearray(data[index:index+17]) #ihdr
+width_index = 7 #width
+height_index = 11 #height
+</code></pre>
+<p>Then, we open the file in read mode. We then set our index as 12, this is because of the positioning of the start of the IHDR chunk. We then read the IHDR chunk itself as a byte array to the <code>ihdr</code> variable. Note the <code>17</code> used due to the length of the IHDR chunk. We then also set index values for the width and height, based on their position in the IHDR chunk.</p>
+<pre><code class="language-python">for x in range (1,2000):
+    height = bytearray(x.to_bytes(2,'big'))
+    for y in range(1,2000):
+        width = bytearray(y.to_bytes(2,'big'))
+        for h in range(len(height)):
+            ihdr[height_index - h] = height[-h -1]
+        for w in range(len(width)):
+            ihdr[width_index - w] = width[-w -1]
+        if hex(crc32(ihdr)) == '0xc615b7e2': #crc
+            print(&quot;width: {} height: {}&quot;.format(width.hex(),height.hex()))
+        for i in range(len(width)):
+            ihdr[width_index - i] = bytearray(b'\x00')[0]
+</code></pre>
+<p>I then nested some for loops, these look way more confusing than they are. We essentially, just keep searching until we find that the calculated crc checksum of the IHDR checksum, matches our target checksum. If this is the case, it prints the dimensions that meet this criteria. For when we define width and height, note the <strong>big</strong> when we call the <code>.to_bytes()</code> method. This simply refers to the face we want it to be packed as big endian.</p>
+<p>All together, my script looks like this:</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+
+from zlib import crc32
+
+data = open(&quot;IntakeCTF_flag.png&quot;,'rb').read()
+index = 12
+
+ihdr = bytearray(data[index:index+17]) #ihdr
+width_index = 7 #width
+height_index = 11 #height
+
+for x in range (1,2000):
+    height = bytearray(x.to_bytes(2,'big'))
+    for y in range(1,2000):
+        width = bytearray(y.to_bytes(2,'big'))
+        for h in range(len(height)):
+            ihdr[height_index - h] = height[-h -1]
+        for w in range(len(width)):
+            ihdr[width_index - w] = width[-w -1]
+        if hex(crc32(ihdr)) == '0xc615b7e2': #crc
+            print(&quot;width: {} height: {}&quot;.format(width.hex(),height.hex()))
+        for i in range(len(width)):
+            ihdr[width_index - i] = bytearray(b'\x00')[0]
+</code></pre>
+<p>What this then spits out is as follows:</p>
+<pre><code>$ ./png_image_bruteforcer.py
+Width: 0190
+Height: 00c8
+</code></pre>
+<p>From this, we now have the correct image dimensions, so we simply use a hex editor (I reccomend <a href="https://wiki.gnome.org/Apps/Ghex">ghex</a> or <a href="https://hexed.it/">hexed.it</a> for an online alternative) to put these where the old bytes were, like so:</p>
+<p><img src="image_2.png" alt="Figure 2"></p>
+<p>Notice how we have to pad the <code>01 90</code> and <code>00 c8</code> with <code>00</code> bytes. This is because the width and height are each 4 bytes. So to get the right dimensions, we pad these both with 2 <code>00</code> bytes at the front, as shown in the image.</p>
+<p>And finally, the image now opens:</p>
+<p><img src="image_3.png" alt="Figure 3"></p>
+<p>We see that the flag is <code>WMG{BruT3_F0rc3_Fun}</code> and the challenge is solved.</p>
+<p>It is worth noting that my script is far from perfect, it was really just a quick CTF solve script. To help this, I have put my script on GitHub and made gradual improvements over time. It is now far more usable, and far more efficient and powerful. It can be found <a href="https://github.com/cjharris18/png-dimensions-bruteforcer">here</a>.</p>
+
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://cjharris18.github.io/tags/forensics/">forensics</a>&nbsp;
+            
+              <a href="https://cjharris18.github.io/tags/ctf/">ctf</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fcjharris18.github.io%2fintakectfmissingbytes%2f&amp;text=IntakeCTF%20-%20Missing%20Bytes%20Writeup&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fcjharris18.github.io%2fintakectfmissingbytes%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fcjharris18.github.io%2fintakectfmissingbytes%2f&amp;title=IntakeCTF%20-%20Missing%20Bytes%20Writeup" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fcjharris18.github.io%2fintakectfmissingbytes%2f&amp;title=IntakeCTF%20-%20Missing%20Bytes%20Writeup" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fcjharris18.github.io%2fintakectfmissingbytes%2f&amp;title=IntakeCTF%20-%20Missing%20Bytes%20Writeup" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fcjharris18.github.io%2fintakectfmissingbytes%2f&amp;description=IntakeCTF%20-%20Missing%20Bytes%20Writeup" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:christopherjharris@protonmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/cjharris18" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/christopher-harris-8921701b5" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="https://cjharris18.github.io/">Chris Harris</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2021
+          
+
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.89.4</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://cjharris18.github.io/js/main.js"></script>
+<script src="https://cjharris18.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://cjharris18.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

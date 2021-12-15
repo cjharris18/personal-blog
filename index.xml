@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chris Harris</title>
+    <link>https://cjharris18.github.io/</link>
+    <description>Recent content on Chris Harris</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>christopherjharris@protonmail.com (Chris Harris)</managingEditor>
+    <webMaster>christopherjharris@protonmail.com (Chris Harris)</webMaster>
+    <copyright>Copyright {year}. All rights reserved.</copyright>
+    <lastBuildDate>Tue, 26 Oct 2021 18:18:41 +0100</lastBuildDate><atom:link href="https://cjharris18.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contact</title>
+      <link>https://cjharris18.github.io/contact/</link>
+      <pubDate>Sun, 28 Nov 2021 16:53:22 +0000</pubDate>
+      <author>christopherjharris@protonmail.com (Chris Harris)</author>
+      <guid>https://cjharris18.github.io/contact/</guid>
+      <description>If you wish to contact me with any enquiries then you can use any of the following links:
+Email
+GitHub
+LinkedIn</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://cjharris18.github.io/about/</link>
+      <pubDate>Sun, 28 Nov 2021 16:52:10 +0000</pubDate>
+      <author>christopherjharris@protonmail.com (Chris Harris)</author>
+      <guid>https://cjharris18.github.io/about/</guid>
+      <description>Hi, I&amp;rsquo;m Chris Harris, a Second Year Cyber Security student at the University of Warwick. I have a specific interest in the Digital Forensics area.
+I am also GCIH certified through my involvement in the Cyber Discovery Elite program. This meant I undertook the Sans SEC504 course, which helped further my interest.
+In my free time, I enjoy participating in CTF&amp;rsquo;s as well as engaging with platforms like HackTheBox. These help me keep my interest fresh and also engage with several interesting cyber security problems, I will be posting some of these writeups on this site.</description>
+    </item>
+    
+    <item>
+      <title>IntakeCTF - Missing Bytes Writeup</title>
+      <link>https://cjharris18.github.io/intakectfmissingbytes/</link>
+      <pubDate>Tue, 26 Oct 2021 18:18:41 +0100</pubDate>
+      <author>christopherjharris@protonmail.com (Chris Harris)</author>
+      <guid>https://cjharris18.github.io/intakectfmissingbytes/</guid>
+      <description>Here is my writeup for the Missing Bytes challenge from the IntakeCTF, hosted by the WMG Cyber Society. An internal CTF hosted at the University of Warwick for the Cyber Security students.
+We are told that the PNG image provided won&amp;rsquo;t open.
+The first thing we can try is to use the pngcheck command, this will tell us if the PNG is corrupted, and if so hopefully how exactly it is corrupted.</description>
+    </item>
+    
+  </channel>
+</rss>

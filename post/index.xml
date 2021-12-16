@@ -15,7 +15,7 @@
       <pubDate>Tue, 26 Oct 2021 18:18:41 +0100</pubDate>
       <author>christopherjharris@protonmail.com (Chris Harris)</author>
       <guid>https://cjharris18.github.io/intakectfmissingbytes/</guid>
-      <description>Here is my writeup for the Missing Bytes challenge from the IntakeCTF, hosted by the WMG Cyber Society. An internal CTF hosted at the University of Warwick for the Cyber Security students. I also posted this on their website.
+      <description>Here is my writeup for the Missing Bytes challenge from the IntakeCTF, hosted by the WMG Cyber Society. An internal CTF hosted at the University of Warwick for the Cyber Security students.
 We are told that the PNG image provided won&amp;rsquo;t open.
 The first thing we can try is to use the pngcheck command, this will tell us if the PNG is corrupted, and if so hopefully how exactly it is corrupted.</description>
     </item>

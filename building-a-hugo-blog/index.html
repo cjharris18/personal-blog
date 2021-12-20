@@ -365,7 +365,7 @@ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautif
 <h2 id="custom-domain">Custom Domain</h2>
 <p>I had my site live, but let&rsquo;s face it, a <code>.github.io</code> domain simply doesn&rsquo;t cut it. So I purchased myself the <code>cjharris.co.uk</code> domain. Getting this to work with GitHub Pages was a bit more difficult than expected. For further info, see the <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">official doccumentation</a>. I will however, highlight some of the basics, as I found this quite interesting.</p>
 <p>Firstly, you need to tell GitHub pages where you now want to serve your site:</p>
-<p><img src="https://cjharris.co.uk/home/cjharris/blog/content/post/building-a-hugo-blog/custom-domain.png" alt="GitHub Pages Custom Domains"></p>
+<p><img src="custom-domain.png" alt="GitHub Pages Custom Domains"></p>
 <p>This is as simple as shown above, from there, GitHub Pages will attempt to deploy your site at the specified domain. An important thing to note here, GitHub Pages only attempts to deploy the site when it detects a new commit to the repo.</p>
 <p>So now, you need to add a few DNS settings for your DNS provider. You will first need to tell them how to communicate with GitHub Pages, this is done by adding <code>A</code> and <code>AAAA</code> records.</p>
 <pre><code>A Records:
@@ -394,7 +394,7 @@ cjharris.co.uk.         3584    IN      AAAA    2606:50c0:8001::153
 cjharris.co.uk.         3584    IN      AAAA    2606:50c0:8000::153
 </code></pre>
 <p>As can now be seen, the records can be found. However, this is not all. Now we need to configure ALIAS and CNAME records, luckily these are also quite straight forward:</p>
-<p><img src="https://cjharris.co.uk/home/cjharris/blog/content/post/building-a-hugo-blog/alias-cname-records.png" alt="ALIAS and CNAME Records"></p>
+<p><img src="alias-cname-records.png" alt="ALIAS and CNAME Records"></p>
 <p>And it is as simple as that, bear in mind however, that these records can take up to 24 hours to update. Personally, I thought I had issues with my configuration here for ages, only to find that I was simply not patient enough.</p>
 <p>And now we have a site served at <code>http://cjharris.co.uk</code>. Just as we wanted.</p>
 <h2 id="verifying-the-domain-with-github-pages">Verifying the Domain With GitHub Pages</h2>
@@ -413,7 +413,7 @@ $ openssl req -new -key cjharris.key -out cjharris.csr
 <pre><code class="language-toml">baseurl = &quot;https://cjharris.co.uk&quot;
 </code></pre>
 <p>After this says <code>https</code> and not <code>http</code>, Hugo will do the rest for you. You also need to make sure that GitHub Pages is set to enforce HTTPS.</p>
-<p><img src="https://cjharris.co.uk/home/cjharris/blog/content/post/building-a-hugo-blog/enforce-https.png" alt="Enforce HTTPS on GitHub Pages"></p>
+<p><img src="enforce-https.png" alt="Enforce HTTPS on GitHub Pages"></p>
 <p>And Just like that, we have a Hugo blog set up, hosted on GitHub Pages with a custom domain and an SSL Certificate.</p>
 <h2 id="closing-remarks">Closing Remarks</h2>
 <p>Above I aimed to highlight the journey I took whilst developing this blog. It is safe to say, I learnt a lot about Hugo, GitHub Pages, SSL and DNS configuration. I do aim to further develop this blog over time, and I would argue it was a worthwile project. Configuration with Hugo was for the most part, quite simple. There are always a few small little configuration issues to be found and solved, but with the documentation, google and <code>grep</code>, these can be easily resolved. Hosting on GitHub Pages itself I also found to be relatively simple, the same for DNS configuration and gaining my SSL certificate. The main difficulty I had here was getting all of these to communicate. When faced with an issue, I had to utilise the tools at my disposal such as <code>dig</code>, along with the information given to me, to diagnose where the problem lie and then to fix it.</p>

@@ -63,7 +63,7 @@ I decided to build a blog in the first place simply to learn new skills.">
   "headline": "My Experience Building a Blog Using Hugo and GitHub Pages",
   "description" : "Given you are seeing this post, it means that I have been successful in creating my blog. However, I wanted to go further into how this came about, the decisions I made, issues I encountered and generally overall how I found this experience. The aim of this post is not to provide a tutorial, but to provide an experience piece on how I found these tools.\nI decided to build a blog in the first place simply to learn new skills.",
   "inLanguage" : "en",
-  "wordCount":  2002 ,
+  "wordCount":  1938 ,
   "datePublished" : "2021-12-18T13:25:00",
   "dateModified" : "2021-12-18T13:25:00",
   "image" : "https:\/\/cjharris.co.uk\/images\/avatar.jpg",
@@ -250,7 +250,7 @@ I decided to build a blog in the first place simply to learn new skills.">
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;10&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2002&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1938&nbsp;words
   
   
     
@@ -404,12 +404,7 @@ cjharris.co.uk.         3584    IN      AAAA    2606:50c0:8000::153
 </code></pre>
 <p>Note however, that GitHub will tell you when this has worked.</p>
 <h2 id="gaining-an-ssl-certificate">Gaining an SSL Certificate</h2>
-<p>This stage is important for getting that nice <code>https://</code> domain, as opposed to <code>This site is not secure</code>. Firstly, we need to generate a CSR certificate. This is then used to by the CA later on to generate your SSL certificate.</p>
-<p>This can be generated using the <code>openssl</code> command:</p>
-<pre><code>$ openssl genrsa -des3 -out cjharris.key 2048
-$ openssl req -new -key cjharris.key -out cjharris.csr
-</code></pre>
-<p>From here, you simply follow the prompts. I then used the generated CSR to gain my SSL certificate. Now you need to make sure the site serves HTTPS and not HTTP, this is done by changing the domain in <code>config.toml</code>:</p>
+<p>This stage is important for getting that nice <code>https://</code> domain, as opposed to <code>This site is not secure</code>. Firstly, you need to make sure the site serves HTTPS and not HTTP, this is done by changing the domain in <code>config.toml</code>:</p>
 <pre><code class="language-toml">baseurl = &quot;https://cjharris.co.uk&quot;
 </code></pre>
 <p>After this says <code>https</code> and not <code>http</code>, Hugo will do the rest for you. You also need to make sure that GitHub Pages is set to enforce HTTPS.</p>

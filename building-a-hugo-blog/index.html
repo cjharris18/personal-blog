@@ -63,7 +63,7 @@ I decided to build a blog in the first place simply to learn new skills.">
   "headline": "My Experience Building a Blog Using Hugo and GitHub Pages",
   "description" : "Given you are seeing this post, it means that I have been successful in creating my blog. However, I wanted to go further into how this came about, the decisions I made, issues I encountered and generally overall how I found this experience. The aim of this post is not to provide a tutorial, but to provide an experience piece on how I found these tools.\nI decided to build a blog in the first place simply to learn new skills.",
   "inLanguage" : "en",
-  "wordCount":  1938 ,
+  "wordCount":  1936 ,
   "datePublished" : "2021-12-18T13:25:00",
   "dateModified" : "2021-12-18T13:25:00",
   "image" : "https:\/\/cjharris.co.uk\/images\/avatar.jpg",
@@ -106,7 +106,7 @@ I decided to build a blog in the first place simply to learn new skills.">
 
 
 // css 
-<link rel="stylesheet" href="https://cjharris.co.uk/css/override-template.css">
+<link rel="stylesheet" href="https://cjharris.co.uk/css/custom.css">
 
 // javascript
 
@@ -145,9 +145,163 @@ I decided to build a blog in the first place simply to learn new skills.">
               <a title="Tags" href="https://cjharris.co.uk/tags/">Tags</a>
             </li>
           
-        
+        <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+<style>
+
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+    padding-top: 13px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+</style>
+
+<script>
+    var body = document.body;
+	var switcher = document.getElementsByClassName('js-toggle')[0];
+
+	
+	switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        this.classList.add('js-toggle--focus');
+		
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-mode');
+			
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-mode');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	
+	if (localStorage.getItem('darkMode')) {
+		
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+	}
+
+</script>
 
         
+	
 
         
       </ul>
@@ -250,7 +404,7 @@ I decided to build a blog in the first place simply to learn new skills.">
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;10&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1938&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1936&nbsp;words
   
   
     
@@ -284,14 +438,13 @@ I decided to build a blog in the first place simply to learn new skills.">
 <h2 id="building-the-site">Building the Site</h2>
 <p>Now that I had decided on a framework for building the site, along with a theme, I was ready to start the bulk of the work. For the most part, Hugo made this relatively easy. More on that later.</p>
 <p>With hugo, the large majority of the config is done for you:</p>
-<pre><code class="language-bash">hugo new site blog
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">hugo new site blog
 git init
 git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautifulhugo
-</code></pre>
-<p>The above commands do the majority of the work for me, from here, a <code>config.toml</code> file will address most of the config. I found that for what I wanted, I could quite easily modify most of this using the TOML, however, there was of course issues. The nature of a template meant that it would not perfectly suit my needs, so I had a few <em>minor</em> issues that I had to resolve. Remember to add a <code>.gitignore</code> file for the <code>public/</code> directory, as this is where hugo builds the site to.</p>
+</code></pre></div><p>The above commands do the majority of the work for me, from here, a <code>config.toml</code> file will address most of the config. I found that for what I wanted, I could quite easily modify most of this using the TOML, however, there was of course issues. The nature of a template meant that it would not perfectly suit my needs, so I had a few <em>minor</em> issues that I had to resolve. Remember to add a <code>.gitignore</code> file for the <code>public/</code> directory, as this is where hugo builds the site to.</p>
 <h2 id="some-of-the-issues-i-faced">Some of the Issues I Faced</h2>
 <p>I found that there was a lot of custom config that I had to do in order to get the site how I wanted. Firstly, it&rsquo;s important to <strong>NOT</strong> modify the theme files themselves, instead copy them to the relevant folders, a quick <code>tree</code> here shows which files I had modified. It is worth noting that I found where to edit these files mainly through the use of commands such as <code>grep</code> and <code>find</code>.</p>
-<pre><code class="language-bash">$ tree
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ tree
 ├── layouts
 │   └── partials
 │       ├── footer.html
@@ -305,70 +458,61 @@ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautif
         ├── favicon.ico
         ├── github.png
         └── linkedin.png
-</code></pre>
-<p>I have not included all of the files you would find, just the ones that provide relevance to this specfic issue. You can see my custom files, so I will go into some of the issues these fix. Note this list is not exhaustive, just a few of the highlights:</p>
+</code></pre></div><p>I have not included all of the files you would find, just the ones that provide relevance to this specfic issue. You can see my custom files, so I will go into some of the issues these fix. Note this list is not exhaustive, just a few of the highlights:</p>
 <h3 id="tab-headings">Tab Headings</h3>
 <p>When I had the site at its default configuration, the tab headings would be <code> Page - Chris Harris</code>. The code in the config for this is:</p>
-<pre><code>{{- with ($.Scratch.Get &quot;Title&quot;) }}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{{- with ($.Scratch.Get &#34;Title&#34;) }}
   &lt;title&gt;{{ . }} - {{ $.Site.Title }}&lt;/title&gt;
 {{- end }}
-</code></pre>
-<p>As we can see, it pulls the name of the page and then the site title, so what is the issue?</p>
+</code></pre></div><p>As we can see, it pulls the name of the page and then the site title, so what is the issue?</p>
 <p>Well, the config in <code>config.toml</code> meant that we had the main page named <code>Chris Harris</code>, so that it could be clicked in the top left of the site. This meant that the home page would display <code>Chris Harris - Chris Harris</code>. I modified this using an if statement.</p>
-<pre><code>{{- with ($.Scratch.Get &quot;Title&quot;) }}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{{- with ($.Scratch.Get &#34;Title&#34;) }}
   {{ if $.IsHome}}
     &lt;title&gt; Home | {{ $.Site.Title }}&lt;/title&gt;
   {{ else }}
     &lt;title&gt;{{ . }} | {{ $.Site.Title }}&lt;/title&gt;
 {{ end }}
-</code></pre>
-<p>By utilising the <code>$.IsHome</code> variable, we were able to simply manually change the tab heading. I had a similar issue for the headings for <code>Tags</code>. I modified this in a similar way:</p>
-<pre><code class="language-bash">$ diff layouts/partials/head.html themes/beautifulhugo/layouts/partials/head.html
-&lt;   {{- $title := $.Title }}
+</code></pre></div><p>By utilising the <code>$.IsHome</code> variable, we were able to simply manually change the tab heading. I had a similar issue for the headings for <code>Tags</code>. I modified this in a similar way:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">$ diff layouts/partials/head.html themes/beautifulhugo/layouts/partials/head.html
+&lt;   <span class="o">{{</span>- <span class="nv">$title</span> :<span class="o">=</span> $.Title <span class="o">}}</span>
 ---
-&gt;   {{- $title := printf &quot;Overview of all pages with the %s #%s&quot; .Data.Singular $.Title }}
-</code></pre>
-<h3 id="the-footer">The Footer</h3>
+&gt;   <span class="o">{{</span>- <span class="nv">$title</span> :<span class="o">=</span> <span class="nb">printf</span> <span class="s2">&#34;Overview of all pages with the %s #%s&#34;</span> .Data.Singular $.Title <span class="o">}}</span>
+</code></pre></div><h3 id="the-footer">The Footer</h3>
 <p>This issue was more minor, before it simply said: <code>Chris Harris . Copyright Stuff . Chris Harris</code>. I did not see the need for my name twice, so I simply removed the following lines from <code>footer.html</code>.</p>
-<pre><code>{{ if .Site.Title }}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">{{ if .Site.Title }}
   &amp;nbsp;&amp;bull;&amp;nbsp;
-  &lt;a href=&quot;{{ &quot;&quot; | absLangURL }}&quot;&gt;{{ .Site.Title }}&lt;/a&gt;
+  &lt;a href=&#34;{{ &#34;&#34; | absLangURL }}&#34;&gt;{{ .Site.Title }}&lt;/a&gt;
 {{ end }}
-</code></pre>
-<h3 id="image-lock">Image Lock</h3>
+</code></pre></div><h3 id="image-lock">Image Lock</h3>
 <p>I found that Hugo would generate all the images and lock them in the center of the page, likely because it wanted to center images for blog posts. However, for my contact page, I did not want this:</p>
 <p><img src="contact-page.png" alt="Contact Page"></p>
 <p>Above is an example of how the current contact page looks (at the time of writing).  To do this, I had to add some Custom CSS. The first step here was to add the following line to <code>config.toml</code>:</p>
-<pre><code class="language-toml">custom_css = [&quot;css/override-template.css&quot;]
-</code></pre>
-<p>The contents of the CSS file itself were quite simple too:</p>
-<pre><code class="language-css">img[src$='#contactImg']
-{
-    float:left;
-    width: 30px;
-    height: 30px;
-    margin-right: 20px;
-}
-</code></pre>
-<p>These configuration options allowed me to simply add <code>#contactImg</code> to my images, in order to set them to achieve what I desired.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">custom_css</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;css/override-template.css&#34;</span><span class="p">]</span>
+</code></pre></div><p>The contents of the CSS file itself were quite simple too:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="nt">img</span><span class="o">[</span><span class="nt">src</span><span class="o">$=</span><span class="s1">&#39;#contactImg&#39;</span><span class="o">]</span>
+<span class="p">{</span>
+    <span class="k">float</span><span class="p">:</span><span class="kc">left</span><span class="p">;</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">30</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">margin-right</span><span class="p">:</span> <span class="mi">20</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><p>These configuration options allowed me to simply add <code>#contactImg</code> to my images, in order to set them to achieve what I desired.</p>
 <h3 id="toml-permalinks">TOML Permalinks</h3>
 <p>This was less of an issue and more of a preference, I simply wanted blog posts to be referred to as <code>cjharris.co.uk/post-name</code> as opposed to <code>cjharris.co.uk/post/post-name</code>. To do this, I simply added the following to my <code>config.toml</code>:</p>
-<pre><code class="language-toml">[permalinks]
-  post = &quot;/:filename&quot;
-</code></pre>
-<h2 id="github-pages">GitHub Pages</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[</span><span class="nx">permalinks</span><span class="p">]</span>
+  <span class="nx">post</span> <span class="p">=</span> <span class="s2">&#34;/:filename&#34;</span>
+</code></pre></div><h2 id="github-pages">GitHub Pages</h2>
 <p>Now that I was happy enough with my site, it became time to host it using GitHub pages. Going into this, I had never used GitHub Pages, as my messy git log might suggest. To generate my site, it is as simple as running <code>hugo</code> to generate the site into the <code>public/</code> directory. This is what should be placed in the Git Repository you want to serve up using GitHub Pages. The actual hosting is relatively simple, you just need to specify the branch, in this case I simply chose <code>main</code> as that made the most sense. Now, my site was live, I could find it at <code>cjharris18.github.io/personal-blog/</code>. I had a live blog.</p>
 <p>I then tested all my features, one issue that I ran into was that my <code>.well-known</code> directory was not served, however, through hosting it locally, it would work. The GitHub pages fix here was simple, create a file called <code>_config.yml</code> with the following content:</p>
-<pre><code class="language-yaml">include: [&quot;.well-known&quot;]
-</code></pre>
-<p>However, this was not an issue that I had forseen the need to address.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="nt">include</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;.well-known&#34;</span><span class="p">]</span><span class="w">
+</span></code></pre></div><p>However, this was not an issue that I had forseen the need to address.</p>
 <h2 id="custom-domain">Custom Domain</h2>
 <p>I had my site live, but let&rsquo;s face it, a <code>.github.io</code> domain simply doesn&rsquo;t cut it. So I purchased myself the <code>cjharris.co.uk</code> domain. Getting this to work with GitHub Pages was a bit more difficult than expected. For further info, see the <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">official doccumentation</a>. I will however, highlight some of the basics, as I found this quite interesting.</p>
 <p>Firstly, you need to tell GitHub pages where you now want to serve your site:</p>
 <p><img src="custom-domain.png" alt="GitHub Pages Custom Domains"></p>
 <p>This is as simple as shown above, from there, GitHub Pages will attempt to deploy your site at the specified domain. An important thing to note here, GitHub Pages only attempts to deploy the site when it detects a new commit to the repo.</p>
 <p>So now, you need to add a few DNS settings for your DNS provider. You will first need to tell them how to communicate with GitHub Pages, this is done by adding <code>A</code> and <code>AAAA</code> records.</p>
-<pre><code>A Records:
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">A Records:
 185.199.108.153
 185.199.109.153
 185.199.110.153
@@ -379,9 +523,8 @@ AAAA Records:
 2606:50c0:8001::153
 2606:50c0:8002::153
 2606:50c0:8003::153
-</code></pre>
-<p>Once this is done, you will see the error change on your GitHub Pages site, showing it has detected something. The best way however to test this is by using the <code>dig</code> command:</p>
-<pre><code>$ dig cjharris.co.uk +noall +answer -t A
+</code></pre></div><p>Once this is done, you will see the error change on your GitHub Pages site, showing it has detected something. The best way however to test this is by using the <code>dig</code> command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ dig cjharris.co.uk +noall +answer -t A
 cjharris.co.uk.         3600    IN      A       185.199.108.153
 cjharris.co.uk.         3600    IN      A       185.199.110.153
 cjharris.co.uk.         3600    IN      A       185.199.111.153
@@ -392,22 +535,19 @@ cjharris.co.uk.         3584    IN      AAAA    2606:50c0:8003::153
 cjharris.co.uk.         3584    IN      AAAA    2606:50c0:8002::153
 cjharris.co.uk.         3584    IN      AAAA    2606:50c0:8001::153
 cjharris.co.uk.         3584    IN      AAAA    2606:50c0:8000::153
-</code></pre>
-<p>As can now be seen, the records can be found. However, this is not all. Now we need to configure ALIAS and CNAME records, luckily these are also quite straight forward:</p>
+</code></pre></div><p>As can now be seen, the records can be found. However, this is not all. Now we need to configure ALIAS and CNAME records, luckily these are also quite straight forward:</p>
 <p><img src="alias-cname-records.png" alt="ALIAS and CNAME Records"></p>
 <p>And it is as simple as that, bear in mind however, that these records can take up to 24 hours to update. Personally, I thought I had issues with my configuration here for ages, only to find that I was simply not patient enough.</p>
 <p>And now we have a site served at <code>http://cjharris.co.uk</code>. Just as we wanted.</p>
 <h2 id="verifying-the-domain-with-github-pages">Verifying the Domain With GitHub Pages</h2>
 <p>Now we had to verify our domain with GitHub Pages. For those asking why, the aim is to avoid subdomain takeover attacks. A takeover attack is essentially where someone can hijack a subdomain to your site, lets say <code>hijacked-subdomain.cjharris.co.uk</code>, to serve content on your site, HackerOne provides an in-depth article <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages">here</a> . Find out more on verifying domains witn GitHub Pages <a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages">here</a>.</p>
 <p>Essentially, what we do here is get given the values for a TXT record from GitHub, which we simply add to our DNS configuration. You can test this using:</p>
-<pre><code>$ dig _github-pages-challenge-USERNAME.example.com +nostats +nocomments +nocmd TXT
-</code></pre>
-<p>Note however, that GitHub will tell you when this has worked.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">$ dig _github-pages-challenge-USERNAME.example.com +nostats +nocomments +nocmd TXT
+</code></pre></div><p>Note however, that GitHub will tell you when this has worked.</p>
 <h2 id="gaining-an-ssl-certificate">Gaining an SSL Certificate</h2>
 <p>This stage is important for getting that nice <code>https://</code> domain, as opposed to <code>This site is not secure</code>. Firstly, you need to make sure the site serves HTTPS and not HTTP, this is done by changing the domain in <code>config.toml</code>:</p>
-<pre><code class="language-toml">baseurl = &quot;https://cjharris.co.uk&quot;
-</code></pre>
-<p>After this says <code>https</code> and not <code>http</code>, Hugo will do the rest for you. You also need to make sure that GitHub Pages is set to enforce HTTPS.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">baseurl</span> <span class="p">=</span> <span class="s2">&#34;https://cjharris.co.uk&#34;</span>
+</code></pre></div><p>After this says <code>https</code> and not <code>http</code>, Hugo will do the rest for you. You also need to make sure that GitHub Pages is set to enforce HTTPS.</p>
 <p><img src="enforce-https.png" alt="Enforce HTTPS on GitHub Pages"></p>
 <p>And Just like that, we have a Hugo blog set up, hosted on GitHub Pages with a custom domain and an SSL Certificate.</p>
 <h2 id="closing-remarks">Closing Remarks</h2>

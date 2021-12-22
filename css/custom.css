@@ -1,0 +1,98 @@
+img[src$='#contactImg']
+{
+	float:left;
+        width: 30px;
+	height: 30px;
+	margin-right: 20px;
+}
+
+:root
+{
+	--lighter-grey: #333333;
+	--bg-color: #f5f5f5;
+	--bg-bg: #2d2d2d;
+    --text: white;
+	--icons: white;	
+	--footer-grey: #bbbbbb;
+}
+
+.dark-mode
+{
+	background: var(--bg-bg);
+	color: var(--bg-color);
+}
+
+/* Navbar */
+.dark-mode .navbar-default
+{
+	background: var(--lighter-grey);
+}
+
+.dark-mode .navbar-custom .nav li a
+{
+	color: var(--text);
+}
+
+.dark-mode .navbar-brand
+{
+	color: var(--text);
+}
+
+
+.dark-mode .post-preview a
+{
+	color: var(--text);
+}
+
+/* Post Specific Elements */
+.dark-mode li a
+{
+	background: var(--darker-grey);
+	color: var(--text);
+}
+
+/* Footer */
+
+.dark-mode footer
+{
+	background: var(--lighter-grey);
+}
+
+.dark-mode .text-muted footer
+{
+	color: var(--footer-grey);
+}
+
+.dark-mode footer a
+{
+	color: var(--footer-grey);
+}
+
+/* Markdown */
+.dark-mode h2
+{
+	color: var(--text);
+}
+
+.dark-mode code
+{
+	background: var(--lighter-grey);
+	color: var(--text);
+}
+
+/* Tags Table */
+.dark-mode .panel
+{
+	background: var(--lighter-grey);
+}
+
+.dark-mode h4
+{
+	color: var(--text);
+}
+
+.dark-mode .list-group-item
+{
+	background: var(--lighter-grey);
+	color: var(--text);
+}

@@ -487,7 +487,7 @@ git submodule add https://github.com/halogenica/beautifulhugo.git themes/beautif
 <p>I found that Hugo would generate all the images and lock them in the center of the page, likely because it wanted to center images for blog posts. However, for my contact page, I did not want this:</p>
 <p><img src="contact-page.png" alt="Contact Page"></p>
 <p>Above is an example of how the current contact page looks (at the time of writing).  To do this, I had to add some Custom CSS. The first step here was to add the following line to <code>config.toml</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">custom_css</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;css/override-template.css&#34;</span><span class="p">]</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="nx">custom_css</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;css/custom.css&#34;</span><span class="p">]</span>
 </code></pre></div><p>The contents of the CSS file itself were quite simple too:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="nt">img</span><span class="o">[</span><span class="nt">src</span><span class="o">$=</span><span class="s1">&#39;#contactImg&#39;</span><span class="o">]</span>
 <span class="p">{</span>

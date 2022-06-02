@@ -6,6 +6,7 @@ img[src$='#contactImg']
 	margin-right: 20px;
 }
 
+
 :root
 {
 	--lighter-grey: #333333;
@@ -68,15 +69,15 @@ img[src$='#contactImg']
 	color: var(--footer-grey);
 }
 
-/* Markdown */
-.dark-mode h2
-{
-	color: var(--text);
-}
-
 .dark-mode code
 {
 	background: var(--lighter-grey);
+	color: var(--text);
+}
+
+/* Markdown */
+.dark-mode h2
+{
 	color: var(--text);
 }
 

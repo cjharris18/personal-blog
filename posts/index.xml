@@ -142,4 +142,64 @@ Height: 00c8
 <p>We see that the flag is <code>WMG{BruT3_F0rc3_Fun}</code> and the challenge is solved.</p>
 
 <p>It is worth noting that my script is far from perfect, it was really just a quick CTF solve script. To help this, I have put my script on GitHub and made gradual improvements over time. It is now far more usable, and far more efficient and powerful. It can be found <a href="https://github.com/cjharris18/png-dimensions-bruteforcer">here</a>.</p>
+]]></content></item><item><title>Templated - HackTheBox Web Challenge Writeup</title><link>https://cjharris.co.uk/posts/templated/</link><pubDate>Sun, 01 Nov 2020 00:00:00 +0000</pubDate><guid>https://cjharris.co.uk/posts/templated/</guid><description>This writeup covers the steps taken to complete the Templated challenge in the Web category on HackTheBox. The challenge involved exploiting a Template Injection vulnerability to achieve Remote Code Execution (RCE) and ultimately retrieve the flag.
+Upon starting the challenge, we are provided with the following:
+Testing for Template Injection The first thing that stood out was the potential for a Jinja2 Template Injection vulnerability, which is common in web applications that render user input using Jinja2 templates.</description><content type="html"><![CDATA[
+
+<p>This writeup covers the steps taken to complete the Templated challenge in the Web category on HackTheBox. The challenge involved exploiting a <strong>Template Injection vulnerability</strong> to achieve <strong>Remote Code Execution (RCE)</strong> and ultimately retrieve the flag.</p>
+
+<p>Upon starting the challenge, we are provided with the following:</p>
+
+<p><img src="image.png" alt="Screenshot from the site." /></p>
+
+<h2 id="testing-for-template-injection">Testing for Template Injection</h2>
+
+<p>The first thing that stood out was the potential for a Jinja2 Template Injection vulnerability, which is common in web applications that render user input using Jinja2 templates.</p>
+
+<p>To test for a possible template injection, I started experimenting with basic Jinja2 syntax. One simple test payload was <code>{{7*7}}</code>, which is a common payload to check if template injection is possible. This payload should return <strong>49</strong> (the result of the multiplication) or instead <strong>7777777</strong> (seven 7&rsquo;s).</p>
+
+<p>However, when I submitted it, the result was <strong>7777777</strong>, which indicates that template injection was indeed possible and that the application was evaluating Jinja2 expressions.</p>
+
+<h2 id="what-is-template-injection">What is Template Injection?</h2>
+
+<p>Jinja2 is a popular templating engine used in Python-based web frameworks like Flask and Django. It allows for dynamic content generation by embedding variables and logic in HTML templates.</p>
+
+<p>Template Injection occurs when an attacker is able to inject arbitrary code into a Jinja2 template. If the input from a user is directly rendered by Jinja2 without proper input sanitization, then it becomes possible for attackers to execute arbitrary code on the server.</p>
+
+<p>For the purpose of this challenge, the template injection allows us to insert Python expressions directly into the template. These expressions can perform operations like accessing global variables, invoking built-in functions, or executing system commands — leading to potential Remote Code Execution (RCE).</p>
+
+<h2 id="investigating-the-vulnerability">Investigating the Vulnerability</h2>
+
+<p>Now that we have confirmed that the website is vulnerable to template injection, its time to gather more information about the enviroment we have been given. I did this by testing with the following payload: <code>{{config.items()}</code>, this gave the following output:</p>
+
+<p><img src="image%20%281%29.png" alt="config.items output." /></p>
+
+<p>In a typical web application (especially those built with frameworks like this), the config object holds important configuration settings for the application, such as database settings, debug mode, secret keys, and other environment-specific data. These settings are often stored in the form of key-value pairs.</p>
+
+<p><code>config.items()</code> is a Python method that returns all the key-value pairs in the configuration as a list of tuples. In the context of this challenge, the output of <code>config.items()</code> helped us confirm that the application was  running in a Python environment, it also gave valuable information into what modules and settings were available.</p>
+
+<h2 id="finding-and-executing-a-valid-remote-code-execution-payload">Finding and Executing a Valid Remote Code Execution Payload</h2>
+
+<p>Now that I knew the application was vulnerable to template injection, I needed a payload that would provide Remote Code Execution (RCE). I searched for known Jinja2 RCE payloads and found the following Python one-liner:</p>
+
+<pre><code class="language-python">{{request.application.__globals__.__builtins__.__import__('os').popen('id').read()}}
+</code></pre>
+
+<p>This payload works by accessing the Python os module via the <strong>globals</strong> dictionary, executing the id command, and returning the result.</p>
+
+<p>By submitting the above payload, I got the following output, which was very suspicious:</p>
+
+<p><img src="image%20%282%29.png" alt="Example of what id gave." /></p>
+
+<p>The output from the <code>id</code> command showed that the attack was successful, and I had executed a system command on the server. This confirmed that I had Remote Code Execution.</p>
+
+<p>To gather a bit more information about the system we had to work with, I replaced the <code>id</code> command with <code>ls</code>. To see where we were and what files were stored in the enviroment:</p>
+
+<p><img src="image%20%283%29.png" alt="Example of ls." /></p>
+
+<p>As we can see here, there exists the file <code>flag.txt</code>, so now we replace <code>ls</code> with <code>cat flag.txt</code> and we get the following returned:</p>
+
+<p><img src="image%20%284%29.png" alt="The flag." /></p>
+
+<p>And with that, we have successfully exploited the provded challenge using a <strong>Jinja2 Template Injection Vulnerability</strong> by obtaining <strong>Remote Code Execution</strong>.</p>
 ]]></content></item></channel></rss>

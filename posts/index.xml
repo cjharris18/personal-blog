@@ -106,8 +106,16 @@ root.txt
 root@cap:~$ cat /root/root.txt
 1973e3470a98a52f8d52de5c878cee1f
 </code></pre>
-]]></content></item><item><title>Advent of Code 2024 Solutions</title><link>https://cjharris.co.uk/posts/advent-of-code-2024/</link><pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate><guid>https://cjharris.co.uk/posts/advent-of-code-2024/</guid><description>For the 2024 Advent of Code challenge, I have published my developed solutions here.
-All solutions are developed in Python3. The solutions created are the optimised solutions, I am planning on expanding on these with writeups soon.</description><content type="html"><![CDATA[<p>For the <a href="https://adventofcode.com/2024">2024 Advent of Code</a> challenge, I have published my developed solutions <a href="https://github.com/cjharris18/advent-of-code-2024">here</a>.</p>
+]]></content></item><item><title>Advent of Code 2025 Solutions</title><link>https://cjharris.co.uk/posts/advent-of-code-2025/</link><pubDate>Mon, 01 Dec 2025 00:00:00 +0000</pubDate><guid>https://cjharris.co.uk/posts/advent-of-code-2025/</guid><description>For the 2025 Advent of Code challenges, I have published my developed solutions at the above GitHub repo.
+All solutions are developed in Golang as I used this event as an opportunity to learn and strengthen my Go skills.</description><content type="html"><![CDATA[<p><a href="https://github.com/cjharris18/advent-of-code-2025"><img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=cjharris18&amp;repo=advent-of-code-2025&amp;theme=dark" alt="Readme Card" /></a></p>
+
+<p>For the <a href="https://adventofcode.com/2025">2025 Advent of Code</a> challenges, I have published my developed solutions at the above GitHub repo.</p>
+
+<p>All solutions are developed in Golang as I used this event as an opportunity to learn and strengthen my Go skills.</p>
+]]></content></item><item><title>Advent of Code 2024 Solutions</title><link>https://cjharris.co.uk/posts/advent-of-code-2024/</link><pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate><guid>https://cjharris.co.uk/posts/advent-of-code-2024/</guid><description>My published solutions for the 2024 Advent of Code challenges.
+All solutions are developed in Python3. The solutions created are the optimised solutions, I am planning on expanding on these with writeups soon.</description><content type="html"><![CDATA[<p><a href="https://github.com/cjharris18/advent-of-code-2024"><img src="https://github-readme-stats-fast.vercel.app/api/pin/?username=cjharris18&amp;repo=advent-of-code-2024&amp;theme=dark" alt="Readme Card" /></a></p>
+
+<p>My published solutions for the <a href="https://adventofcode.com/2024">2024 Advent of Code</a> challenges.</p>
 
 <p>All solutions are developed in Python3. The solutions created are the optimised solutions, I am planning on expanding on these with writeups soon.</p>
 ]]></content></item><item><title>IntakeCTF - Missing Bytes Writeup</title><link>https://cjharris.co.uk/posts/intakectfmissingbytes/</link><pubDate>Tue, 26 Oct 2021 00:00:00 +0000</pubDate><guid>https://cjharris.co.uk/posts/intakectfmissingbytes/</guid><description>Here is my writeup for the Missing Bytes challenge from the IntakeCTF, hosted by the WMG Cyber Society. An internal CTF hosted at the University of Warwick for the Cyber Security students. I also posted this on their website.

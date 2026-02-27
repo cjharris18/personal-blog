@@ -1,4 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Chris Harris</title><link>https://cjharris.co.uk/</link><description>Recent content on Chris Harris</description><generator>Hugo -- gohugo.io</generator><language>en-uk</language><lastBuildDate>Tue, 20 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://cjharris.co.uk/index.xml" rel="self" type="application/rss+xml"/><item><title>Cap - HackTheBox Machine Writeup</title><link>https://cjharris.co.uk/posts/cap/</link><pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate><guid>https://cjharris.co.uk/posts/cap/</guid><description>Difficulty: Easy
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Chris Harris</title><link>https://cjharris.co.uk/</link><description>Recent content on Chris Harris</description><generator>Hugo -- gohugo.io</generator><language>en-uk</language><lastBuildDate>Wed, 18 Feb 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://cjharris.co.uk/index.xml" rel="self" type="application/rss+xml"/><item><title>TwoMillion - HackTheBox Machine Writeup</title><link>https://cjharris.co.uk/posts/twomillion/</link><pubDate>Wed, 18 Feb 2026 00:00:00 +0000</pubDate><guid>https://cjharris.co.uk/posts/twomillion/</guid><description>Difficulty: Easy
+Operating System: Linux
+Recon and Enumeration We will start this machine by doing a quick nmap, this will give an idea of what is running so that I can begin to tackle it.
+nmap 2million.htb
+PORT STATE SERVICE 22/tcp open ssh 80/tcp open http After this, we can see 2 ports open:
+An SSH server running on port 22. A web server running on port 80.</description></item><item><title>Cap - HackTheBox Machine Writeup</title><link>https://cjharris.co.uk/posts/cap/</link><pubDate>Tue, 20 Jan 2026 00:00:00 +0000</pubDate><guid>https://cjharris.co.uk/posts/cap/</guid><description>Difficulty: Easy
 Operating System: Linux
 Recon and Enumeration We will start this machine by doing a quick nmap, this will give an idea of what is running so that I can begin to tackle it.
 nmap cap.htb
